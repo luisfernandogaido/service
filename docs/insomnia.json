@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-04-06T03:11:16.557Z",
+	"__export_date": "2018-04-06T19:00:00.097Z",
 	"__export_source": "insomnia.desktop.app:v5.14.9",
 	"resources": [
 		{
@@ -38,29 +38,56 @@
 		{
 			"_id": "req_15b5c01c55174ddb984923eb50396b1d",
 			"authentication": {},
-			"body": {
-				"mimeType": "application/json",
-				"text": "[\n\t1,\n\t2,\n\t3,\n\t4,\n\t5\n]"
-			},
+			"body": {},
 			"created": 1522983195310,
 			"description": "",
 			"headers": [
 				{
+					"id": "pair_9c4446e8fa4e4bc692234e6be0bd25b1",
 					"name": "Content-Type",
 					"value": "application/json"
 				}
 			],
 			"metaSortKey": -1522983195310,
 			"method": "GET",
-			"modified": 1522983246020,
-			"name": "soma",
+			"modified": 1523025493440,
+			"name": "orgaos",
 			"parameters": [],
 			"parentId": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "{{ urlbase  }}/soma",
+			"url": "{{ urlbase  }}/orgaos?o=cdd falcao&o=ac pederneiras",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7a5f1883b5964cb6af260fd5544a0cb7",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "[\n \"CDD ASSIS\",\n \"CDD FALCAO\",\n \"CTC JAGUE\",\n \"SAO PAULO\"\n]"
+			},
+			"created": 1523035255230,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9c4446e8fa4e4bc692234e6be0bd25b1",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"metaSortKey": -1521413161501,
+			"method": "POST",
+			"modified": 1523040924736,
+			"name": "orgaosjson",
+			"parameters": [],
+			"parentId": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ urlbase  }}/orgaosjson",
 			"_type": "request"
 		},
 		{
