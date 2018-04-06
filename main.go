@@ -30,11 +30,11 @@ func teste() {
 	}
 	scanner := bufio.NewScanner(f)
 	textos := make([]string, 0)
-	for scanner.Scan(){
+	for scanner.Scan() {
 		t := scanner.Text()
 		textos = append(textos, t)
 	}
-	bytes, err:=json.MarshalIndent(textos, "", " ")
+	bytes, err := json.MarshalIndent(textos, "", " ")
 	if err != nil {
 		log.Fatal(err)
 	}

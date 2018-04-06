@@ -9,6 +9,7 @@ import (
 
 	"github.com/arbovm/levenshtein"
 	"io/ioutil"
+	"sync"
 )
 
 type resultadoBuscaOrgao struct {
@@ -17,6 +18,13 @@ type resultadoBuscaOrgao struct {
 }
 
 var orgaos []modelo.Orgao
+
+type cacheOrgaos struct {
+	sync.RWMutex
+	mapa map[string][]modelo.Orgao
+}
+
+var cacheOrg = cacheOrgaos{mapa: make(map[string][]modelo.Orgao)}
 
 func LoadOrgaos() error {
 	var err error
@@ -84,6 +92,12 @@ func OrgaosJson(w http.ResponseWriter, r *http.Request) {
 
 func seleciona(txt string) []modelo.Orgao {
 	txt = strings.ToUpper(txt)
+	cacheOrg.RLock()
+	cacheRes, ok := cacheOrg.mapa[txt]
+	cacheOrg.RUnlock()
+	if ok {
+		return cacheRes
+	}
 	menorDis := 100
 	var proximos = make([]modelo.Orgao, 0)
 	for _, o := range orgaos {
@@ -96,5 +110,8 @@ func seleciona(txt string) []modelo.Orgao {
 			proximos = append(proximos, o)
 		}
 	}
+	cacheOrg.Lock()
+	cacheOrg.mapa[txt] = proximos
+	cacheOrg.Unlock()
 	return proximos
 }
