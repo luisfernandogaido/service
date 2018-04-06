@@ -1,2 +1,2 @@
 # service
-Um singelo serviço em Go
+Um singelo serviço em Go.

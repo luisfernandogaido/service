@@ -1,0 +1,93 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-04-06T03:11:16.557Z",
+	"__export_source": "insomnia.desktop.app:v5.14.9",
+	"resources": [
+		{
+			"_id": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
+			"created": 1522983114389,
+			"description": "",
+			"modified": 1522983114389,
+			"name": "service",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_c1df6d0957514b4cb4c44d0aa825a4d1",
+			"color": null,
+			"created": 1522983114756,
+			"data": {
+				"urlbase": "http://localhost:4000"
+			},
+			"isPrivate": false,
+			"modified": 1522983178652,
+			"name": "New Environment",
+			"parentId": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_0741cf849563401c8d35a818b63f7c46",
+			"cookies": [],
+			"created": 1522983114759,
+			"modified": 1522983114759,
+			"name": "Default Jar",
+			"parentId": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_15b5c01c55174ddb984923eb50396b1d",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "[\n\t1,\n\t2,\n\t3,\n\t4,\n\t5\n]"
+			},
+			"created": 1522983195310,
+			"description": "",
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"metaSortKey": -1522983195310,
+			"method": "GET",
+			"modified": 1522983246020,
+			"name": "soma",
+			"parameters": [],
+			"parentId": "wrk_9ef069bf7a9d430fad2ea7ccbac2977f",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ urlbase  }}/soma",
+			"_type": "request"
+		},
+		{
+			"_id": "env_1b596f72db6d4f408a614d266fd4d425",
+			"color": null,
+			"created": 1522983893589,
+			"data": {
+				"urlbase": "https://service.gaido.net.br"
+			},
+			"isPrivate": false,
+			"modified": 1522983914272,
+			"name": "pro",
+			"parentId": "env_c1df6d0957514b4cb4c44d0aa825a4d1",
+			"_type": "environment"
+		},
+		{
+			"_id": "env_7cbb173da833494c8d93da14ce7170e7",
+			"color": null,
+			"created": 1522983933148,
+			"data": {
+				"urlbase": "http://localhost:4000"
+			},
+			"isPrivate": false,
+			"modified": 1522983942058,
+			"name": "dev",
+			"parentId": "env_c1df6d0957514b4cb4c44d0aa825a4d1",
+			"_type": "environment"
+		}
+	]
+}
