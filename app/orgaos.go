@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 
 	"github.com/arbovm/levenshtein"
+	"io/ioutil"
 )
 
 type resultadoBuscaOrgao struct {
@@ -32,6 +33,36 @@ func Orgaos(w http.ResponseWriter, r *http.Request) {
 	}
 	rs := make([]resultadoBuscaOrgao, 0)
 	for _, o := range os {
+		r := resultadoBuscaOrgao{
+			Termo:     o,
+			Resultado: seleciona(o),
+		}
+		rs = append(rs, r)
+	}
+	bytes, err := json.MarshalIndent(rs, "", " ")
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	w.Header().Add("Content-type", "application/json; charset=utf8")
+	fmt.Fprintln(w, string(bytes))
+}
+
+func OrgaosJson(w http.ResponseWriter, r *http.Request) {
+	in, err:= ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	defer r.Body.Close()
+	var textos []string
+	err = json.Unmarshal(in, &textos)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	rs := make([]resultadoBuscaOrgao, 0)
+	for _, o := range textos {
 		r := resultadoBuscaOrgao{
 			Termo:     o,
 			Resultado: seleciona(o),
