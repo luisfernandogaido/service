@@ -49,7 +49,11 @@ func Orgaos(w http.ResponseWriter, r *http.Request) {
 }
 
 func OrgaosJson(w http.ResponseWriter, r *http.Request) {
-	in, err:= ioutil.ReadAll(r.Body)
+	if r.Method != "POST" {
+		http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+		return
+	}
+	in, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
