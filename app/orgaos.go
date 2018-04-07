@@ -24,6 +24,7 @@ var defaultCacheOrgaos = cacheOrgaos{
 }
 
 func Orgs(w http.ResponseWriter, r *http.Request) {
+	cors(w)
 	values := r.URL.Query()
 	os, ok := values["o"]
 	if !ok {
@@ -52,7 +53,7 @@ func Orgs(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, string(bytes))
 }
 
-func selecionaOrgaos(txt string) ([]modelo.Orgao, error){
+func selecionaOrgaos(txt string) ([]modelo.Orgao, error) {
 	txt = strings.ToLower(txt)
 	defaultCacheOrgaos.mutex.RLock()
 	orgs, ok := defaultCacheOrgaos.mapa[txt]
