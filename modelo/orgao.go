@@ -48,3 +48,32 @@ func Orgaos() ([]Orgao, error) {
 	}
 	return orgaos, nil
 }
+
+func OrgaosSeleciona(txt string) ([]Orgao, error) {
+	rows, err := mysql.Ect.Query("call orgaos_seleciona(?)", ft(txt))
+	if err != nil {
+		return nil, err
+	}
+	orgaos := make([]Orgao, 0)
+	for rows.Next() {
+		o := Orgao{}
+		err = rows.Scan(
+			&o.Mcu,
+			&o.Nome,
+			&o.Tipo,
+			&o.Cidade,
+			&o.Dr,
+			&o.Uf,
+			&o.Cep,
+		)
+		if err != nil {
+			return nil, err
+		}
+		o.Nome = strings.TrimSpace(o.Nome)
+		o.Cidade = strings.TrimSpace(o.Cidade)
+		o.Dr = strings.TrimSpace(o.Dr)
+		orgaos = append(orgaos, o)
+	}
+	return orgaos, nil
+
+}
