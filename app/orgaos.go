@@ -64,6 +64,7 @@ func Orgs(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, string(bytes))
 }
 func MuitosOrgs(w http.ResponseWriter, r *http.Request) {
+	cors(w)
 	if r.Method != "POST" {
 		http.Error(w, "Método não permitido.", http.StatusMethodNotAllowed)
 		return
