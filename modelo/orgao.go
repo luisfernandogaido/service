@@ -26,6 +26,7 @@ func Orgaos() ([]Orgao, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 	orgaos := make([]Orgao, 0)
 	for rows.Next() {
 		orgao := Orgao{}
