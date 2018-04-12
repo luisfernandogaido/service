@@ -63,6 +63,7 @@ func Orgs(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-type", "application/json; charset=utf8")
 	fmt.Fprintln(w, string(bytes))
 }
+
 func MuitosOrgs(w http.ResponseWriter, r *http.Request) {
 	cors(w)
 	if r.Method != "POST" {
@@ -101,7 +102,6 @@ func MuitosOrgs(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Add("Content-type", "application/json; charset=utf8")
 	fmt.Fprintln(w, string(bytes))
-
 }
 
 func selecionaOrgaos(txt string) ([]modelo.Orgao, error) {
